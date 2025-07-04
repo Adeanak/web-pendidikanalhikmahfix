@@ -1,0 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 231 48% 48%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-poppins;
+  }
+
+  /* Force dark mode permanently */
+  html {
+    @apply dark;
+  }
+
+  /* Ensure all components use dark theme */
+  * {
+    color-scheme: dark;
+  }
+
+  /* Override any light mode styles */
+  .bg-white {
+    @apply bg-gray-900 !important;
+  }
+
+  .text-black {
+    @apply text-white !important;
+  }
+
+  .text-gray-900 {
+    @apply text-gray-100 !important;
+  }
+
+  .text-gray-800 {
+    @apply text-gray-200 !important;
+  }
+
+  .text-gray-700 {
+    @apply text-gray-300 !important;
+  }
+
+  .text-gray-600 {
+    @apply text-gray-400 !important;
+  }
+
+  .bg-gray-50 {
+    @apply bg-gray-900 !important;
+  }
+
+  .bg-gray-100 {
+    @apply bg-gray-800 !important;
+  }
+
+  .bg-gray-200 {
+    @apply bg-gray-700 !important;
+  }
+
+  .border-gray-200 {
+    @apply border-gray-700 !important;
+  }
+
+  .border-gray-300 {
+    @apply border-gray-600 !important;
+  }
+
+  /* Ensure form elements are dark */
+  input, textarea, select {
+    @apply bg-gray-800 text-white border-gray-600 !important;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    @apply border-blue-500 ring-blue-500 !important;
+  }
+
+  /* Ensure buttons have proper dark styling */
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white !important;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-600 hover:bg-gray-700 text-white !important;
+  }
+
+  /* Ensure cards and containers are dark */
+  .card, .container {
+    @apply bg-gray-800 text-white !important;
+  }
+
+  /* Ensure modals and overlays are dark */
+  .modal, .overlay {
+    @apply bg-gray-900 text-white !important;
+  }
+
+  /* Ensure tables are dark */
+  table {
+    @apply bg-gray-800 text-white !important;
+  }
+
+  th {
+    @apply bg-gray-700 text-white !important;
+  }
+
+  td {
+    @apply border-gray-600 !important;
+  }
+}
+
+/* Splash Screen Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+  }
+  
+  .gradient-secondary {
+    background: linear-gradient(135deg, #F59E0B 0%, #10B981 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+  }
+
+  /* Improved animations */
+  .animate-bounce-gentle {
+    animation: bounce-gentle 3s ease-in-out infinite;
+  }
+
+  @keyframes bounce-gentle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Responsive text utilities */
+  .responsive-text-sm {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+  
+  .responsive-text-base {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+  
+  .responsive-text-lg {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+  }
+  
+  .responsive-text-xl {
+    font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+  }
+  
+  .responsive-text-2xl {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+  
+  .responsive-text-3xl {
+    font-size: clamp(1.5rem, 5vw, 1.875rem);
+  }
+  
+  .responsive-text-4xl {
+    font-size: clamp(1.875rem, 6vw, 2.25rem);
+  }
+}
+
+/* Optimize transitions */
+.transition-fast {
+  transition-duration: 150ms;
+}
+
+.transition-medium {
+  transition-duration: 300ms;
+}
+
+.transition-slow {
+  transition-duration: 500ms;
+}
+
+/* Improve dark mode transition */
+html.dark {
+  transition: background-color 0.3s ease;
+}
+
+/* Improve mobile responsiveness */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Optimize images for better performance */
+img {
+  content-visibility: auto;
+}
+
+/* Improve scrolling performance */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
