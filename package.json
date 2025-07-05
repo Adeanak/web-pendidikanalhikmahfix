@@ -6,14 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:vercel": "tsc && vite build",
-    "deploy:vercel": "node deploy-vercel.cjs",
-    "deploy:vercel:prod": "node deploy-vercel.cjs --prod",
+    "build:prod": "tsc && vite build --mode production",
+    "build:clean": "powershell -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }\" && npm run build:prod",
+    "deploy:vercel": "vercel --prod",
+    "deploy:vercel:prod": "npm run build:clean && vercel --prod",
+    "deploy:prepare": "npm ci --legacy-peer-deps && npm run build:clean",
     "build:dev": "vite build --mode development",
-    "lint": "eslint .",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
     "preview": "vite preview",
-    "fix:vercel": "node fix-vercel-deployment.cjs",
-    "fix:deployment": "npm run fix:vercel"
+    "preview:prod": "vite preview --mode production",
+    "type-check": "tsc --noEmit",
+    "clean": "powershell -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }; if (Test-Path node_modules\\.vite) { Remove-Item -Recurse -Force node_modules\\.vite }\"",
+    "reinstall": "powershell -Command \"if (Test-Path node_modules) { Remove-Item -Recurse -Force node_modules }; if (Test-Path package-lock.json) { Remove-Item package-lock.json }\" && npm install --legacy-peer-deps",
+    "vercel:build": "npm ci --legacy-peer-deps && npm run build:prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

@@ -13,26 +13,31 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    minify: 'esbuild',
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
-      external: ['html2canvas', 'jspdf', 'jspdf-autotable'],
       output: {
         manualChunks: {
-          // Vendor chunks
+          // Core React chunks
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': [
+          // UI Library chunks
+          'radix-ui': [
             '@radix-ui/react-dialog',
             '@radix-ui/react-dropdown-menu',
             '@radix-ui/react-select',
             '@radix-ui/react-tabs',
             '@radix-ui/react-toast'
           ],
-          'supabase-vendor': ['@supabase/supabase-js'],
-          'utils-vendor': ['clsx', 'tailwind-merge', 'class-variance-authority'],
-          'icons-vendor': ['lucide-react'],
-          'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod']
+          // Database and API
+          'supabase': ['@supabase/supabase-js'],
+          // Utility libraries
+          'utils': ['clsx', 'tailwind-merge', 'class-variance-authority'],
+          // Icons and UI components
+          'ui-components': ['lucide-react'],
+          // Form handling
+          'forms': ['react-hook-form', '@hookform/resolvers', 'zod']
         }
       }
-    },
+    }
   },
 });
