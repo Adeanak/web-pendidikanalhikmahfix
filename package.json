@@ -11,7 +11,9 @@
     "deploy:vercel:prod": "node deploy-vercel.js --prod",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fix:vercel": "node fix-vercel-deployment.cjs",
+    "fix:deployment": "npm run fix:vercel"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
